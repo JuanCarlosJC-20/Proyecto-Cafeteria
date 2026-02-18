@@ -31,4 +31,3 @@ Control avanzado de inventario.
 
 Reportes financieros.
 
-Integraciones externas.
