@@ -30,6 +30,7 @@ public class personDto {
     //@DecimalMin     // Valor decimal mínimo
     //@DecimalMax     // Valor decimal máximo
 
+    
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 2, max = 80, message = "El nombre debe tener entre 2 y 80 caracteres") 
