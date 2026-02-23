@@ -18,4 +18,6 @@ public class userRolDto {
     @NotNull(message = "El id del rol es obligatorio")
     private Long roleId;
 
+    private Boolean state;
+
 }

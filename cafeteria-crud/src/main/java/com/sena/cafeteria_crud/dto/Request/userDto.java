@@ -22,6 +22,8 @@ public class userDto {
     @Size(min = 6, max = 255, message = "La contraseña debe tener entre 6 y 255 caracteres")
     private String password;
 
+    private Boolean state;
+
     @NotNull(message = "El id de la persona es obligatorio")
     private Long personId;
 

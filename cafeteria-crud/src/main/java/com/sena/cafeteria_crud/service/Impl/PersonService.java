@@ -34,7 +34,7 @@ public class PersonService {
     // Método para guardar una persona
 
     public boolean savaPerson(personDto personDto) {
-        // Lógica para guardar una persona
+   
         var person = new Person();
         person.setFirstName(personDto.getFirstName());
         person.setLastName(personDto.getLastName());
@@ -51,7 +51,7 @@ public class PersonService {
         return true;
     } 
 
-    // Metodo para actualizar una persona por ID
+
 
    //Metodo para actilizar una persona por su ID
     public boolean updatperson(Long id, personDto personDto){

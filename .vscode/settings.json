@@ -1,0 +1,16 @@
+{
+    "java.dependency.packagePresentation": "hierarchical",
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "cafetin",
+            "database": "cafeteria_db",
+            "username": "admin",
+            "password": "admin123"
+        }
+    ]
+}
