@@ -11,9 +11,10 @@ import com.sena.cafeteria_crud.model.Person;
 import com.sena.cafeteria_crud.model.User;
 import com.sena.cafeteria_crud.repository.IPersonRepository;
 import com.sena.cafeteria_crud.repository.IUserRepository;
+import com.sena.cafeteria_crud.service.Interface.IUserService;
 
 @Service
-public class UserService {
+public class UserService implements IUserService {
 
     @Autowired
     private IUserRepository userRepository;
@@ -21,6 +22,9 @@ public class UserService {
     @Autowired
     private IPersonRepository personRepository;
 
+
+    //metodo para obtener todos los usuarios
+    @Override
     public List<userResponseDto> getAllUsers(){
         return userRepository.findAll().stream()
         .map(user -> new userResponseDto(
@@ -33,6 +37,7 @@ public class UserService {
 
     // Método para crear un nuevo usuario
 
+    @Override
     public boolean crearUser(userDto userDto){
         // Buscar la persona en la base de datos
         Person person = personRepository.findById(userDto.getPersonId())
@@ -48,12 +53,14 @@ public class UserService {
     }
 
     // Método para eliminar un usuario por ID
+    @Override
     public boolean eliminarUser(long id){
         userRepository.deleteById(id);
         return true;
     }
 
     // Método para actualizar un usuario por ID
+    @Override
     public boolean actualizarUser(long id, userDto userDto){
         var user = userRepository.findById(id).orElseThrow();
         user.setUsername(userDto.getUsername());

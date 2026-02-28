@@ -9,15 +9,17 @@ import com.sena.cafeteria_crud.dto.Request.personDto;
 import com.sena.cafeteria_crud.dto.Response.personResponseDto;
 import com.sena.cafeteria_crud.model.Person;
 import com.sena.cafeteria_crud.repository.IPersonRepository;
+import com.sena.cafeteria_crud.service.Interface.IPersonService;
 
 @Service
-public class PersonService {
+public class PersonService implements IPersonService {
 
     @Autowired
     private IPersonRepository IpersonRepository;
 
     // Método para obtener todas las personas
 
+    @Override
     public List<personResponseDto> getAllPersons() {
         
         return IpersonRepository.findAll().stream()
@@ -33,6 +35,7 @@ public class PersonService {
 
     // Método para guardar una persona
 
+    @Override
     public boolean savaPerson(personDto personDto) {
    
         var person = new Person();
@@ -46,6 +49,7 @@ public class PersonService {
 
     // Método para eliminar una persona por ID
 
+    @Override
     public boolean deletepuerca(Long id){
         IpersonRepository.deleteById(id);
         return true;
@@ -54,6 +58,7 @@ public class PersonService {
 
 
    //Metodo para actilizar una persona por su ID
+    @Override
     public boolean updatperson(Long id, personDto personDto){
         var person = IpersonRepository.findById(id).orElseThrow();
         person.setFirstName(personDto.getFirstName());

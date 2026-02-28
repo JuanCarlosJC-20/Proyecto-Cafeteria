@@ -13,9 +13,10 @@ import com.sena.cafeteria_crud.model.UserRole;
 import com.sena.cafeteria_crud.repository.IRolRepository;
 import com.sena.cafeteria_crud.repository.IUserRepository;
 import com.sena.cafeteria_crud.repository.IUserRoleRepository;
+import com.sena.cafeteria_crud.service.Interface.IUserRoleService;
 
 @Service
-public class UserRoleService {
+public class UserRoleService implements IUserRoleService {
 
     @Autowired
     private IUserRoleRepository userRoleRepository;
@@ -27,6 +28,7 @@ public class UserRoleService {
     private IRolRepository rolRepository;
 
     // Método para obtener todos los user roles
+    @Override
     public List<userRolResponseDto> getAllUserRoles() {
         return userRoleRepository.findAll().stream()
                 .map(userRole -> new userRolResponseDto(
@@ -40,6 +42,7 @@ public class UserRoleService {
     }
 
     // Método para guardar un user role
+    @Override
     public boolean guardarUserRole(userRolDto userRolDto) {
         User user = userRepository.findById(userRolDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("No se encontró el usuario con id: " + userRolDto.getUserId()));
@@ -56,12 +59,14 @@ public class UserRoleService {
     }
 
     // Método para eliminar un user role por ID
+    @Override
     public boolean eliminarUserRole(Long id) {
         userRoleRepository.deleteById(id);
         return true;
     }
 
     // Método para actualizar un user role por su ID
+    @Override
     public boolean actualizarUserRole(Long id, userRolDto userRolDto) {
         var userRole = userRoleRepository.findById(id).orElseThrow();
 
